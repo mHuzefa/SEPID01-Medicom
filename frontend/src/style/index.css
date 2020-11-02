@@ -1,0 +1,14 @@
+.background-searchBar {
+  background-color: #3aafa9;
+  width: 100%;
+}
+.background-Navbar {
+  background-color: #2b7a78;
+}
+.brand-icon {
+  font-family: 'Anonymous Pro', monospace;
+  font-weight: bold !important;
+  font-size: 32px !important;
+  color: white !important;
+  margin-right: 5% !important;
+}
