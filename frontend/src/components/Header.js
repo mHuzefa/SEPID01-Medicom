@@ -1,27 +1,31 @@
 import React from 'react'
 import SearchIcon from '@material-ui/icons/Search'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+//import Fab from '@material-ui/core/Fab'
+import Badge from '@material-ui/core/Badge'
 import LocalMall from '@material-ui/icons/LocalMallOutlined'
 import IconButton from '@material-ui/core/IconButton'
+import PersonIcon from '@material-ui/icons/Person'
 import Paper from '@material-ui/core/Paper'
 import InputBase from '@material-ui/core/InputBase'
 import { Link } from 'react-router-dom'
 import '../style/index.css'
-import { Container, Row, Col, Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Row, Col, Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Menu } from '@material-ui/core'
+import MenuItem from '@material-ui/core/MenuItem'
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: 30,
+    top: 8,
+
+    padding: '0 2px',
+  },
+}))(Badge)
 
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
-  },
-  root: {
-    padding: '2px 2px',
-    marginRight: theme.spacing(3),
-    marginTop: theme.spacing(1),
-    display: 'flex',
-    alignItems: 'center',
-    width: '650px',
-    height: 40,
-    borderRadius: '20px 20px 20px 20px',
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -30,63 +34,80 @@ const useStyles = makeStyles((theme) => ({
   iconButton: {
     padding: 10,
   },
-  button: {
-    background: 'black',
-    color: 'white',
-    borderRadius: '20px 20px 20px 20px',
-    height: '40px',
-    width: '90px',
-    border: 'none',
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    display: 'inline-block',
-    marginTop: theme.spacing(1),
-  },
-  Cart: {
-    color: 'black',
-    marginTop: theme.spacing(1),
-    marginLeft: theme.spacing(5),
-  },
 }))
 
 const Header = () => {
   const classes = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
     <div>
-      <Navbar className='background-searchBar' expand='lg'>
-        <Container>
-          <Row lg={8}>
-            <Col>
-              <Navbar.Brand className='brand-icon' href='#home'>
-                Medicom
-              </Navbar.Brand>
-            </Col>
-            <Col>
-              <Paper component='form' className={classes.root}>
-                <InputBase
-                  className={classes.input}
-                  placeholder='Search'
-                  inputProps={{ 'aria-label': 'Search' }}
-                />
-                <IconButton
-                  type='submit'
-                  className={classes.iconButton}
-                  aria-label='search'>
-                  <SearchIcon />
-                </IconButton>
-              </Paper>
-            </Col>
-            <Col>
-              <button className={classes.button}>Log In</button>
-            </Col>
-            <Col>
-              <Link to='#'>
-                <LocalMall fontSize='large' className={classes.Cart} />
-              </Link>
-            </Col>
-          </Row>
-        </Container>
+      <Navbar className='background-searchBar' expand='lg' sticky='top'>
+        <Row>
+          <Col>
+            <Link to='/' style={{ textDecoration: 'none' }}>
+              <Navbar.Brand className='brand-icon'>Medicom</Navbar.Brand>
+            </Link>
+          </Col>
+          <Col>
+            <Paper component='form' className='header'>
+              <InputBase
+                className={classes.input}
+                placeholder='Search'
+                inputProps={{ 'aria-label': 'Search' }}
+              />
+              <IconButton
+                type='submit'
+                className={classes.iconButton}
+                aria-label='search'>
+                <SearchIcon />
+              </IconButton>
+            </Paper>
+          </Col>
+          <Col>
+            <IconButton style={{ outline: 'none' }}>
+              <PersonIcon
+                fontSize='large'
+                className='cart'
+                onClick={handleClick}
+              />
+              <Menu
+                id='simple-menu'
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}>
+                <Link
+                  to='/login'
+                  style={{ textDecoration: 'none', color: 'black' }}>
+                  <MenuItem onClick={handleClose}>Login</MenuItem>
+                </Link>
+                <Link
+                  to='/signup'
+                  style={{ textDecoration: 'none', color: 'black' }}>
+                  <MenuItem onClick={handleClose}>SignUp</MenuItem>
+                </Link>
+              </Menu>
+            </IconButton>
+          </Col>
+          <Col>
+            <Link>
+              <IconButton aria-label='cart' className='cartIcon'>
+                <StyledBadge badgeContent={0} showZero color='error'>
+                  <LocalMall fontSize='large' className='cart' />
+                </StyledBadge>
+              </IconButton>
+            </Link>
+          </Col>
+        </Row>
       </Navbar>
       <Navbar className='background-Navbar' expand='lg'>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
