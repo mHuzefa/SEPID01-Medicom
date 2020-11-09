@@ -93,6 +93,9 @@ const LoginPage = () => {
                 <Link href='/signup' variant='body2'>
                   {"Don't have an account? Sign Up"}
                 </Link>
+                <Link href='/adminlogin' variant='body2'>
+                  {"Are you an admin? Goto Admin loginpage."}
+                </Link>
               </Grid>
             </Grid>
           </form>
