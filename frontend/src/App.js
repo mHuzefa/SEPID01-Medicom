@@ -1,12 +1,15 @@
-import React from 'react'
-import Header from './components/Header'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import LoginPage from './pages/LoginPage'
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Checkout from './components/Checkout'
+import Header from './components/Header'
 import AdminLoginPage from './pages/AdminLoginPage'
-import SignUp from './pages/RegistrationPage'
+import LoginPage from './pages/LoginPage'
 import ProductPage from './pages/ProductPage'
+import SignUp from './pages/RegistrationPage'
+
+import ProductPage from './pages/ProductPage'
+
 
 const App = () => {
   return (
