@@ -53,7 +53,7 @@ const Header = () => {
       <Navbar className='background-searchBar' expand='lg' sticky='top'>
         <Row>
           <Col>
-            <Link to='/' style={{ textDecoration: 'none' }}>
+            <Link to='/productpage' style={{ textDecoration: 'none' }}>
               <Navbar.Brand className='brand-icon'>Medicom</Navbar.Brand>
             </Link>
           </Col>
@@ -113,8 +113,8 @@ const Header = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <Nav.Link href='#home'>Home</Nav.Link>
-            <Nav.Link href='#link'>Link</Nav.Link>
+            <Nav.Link href='/home'>Home</Nav.Link>
+            <Nav.Link href='/productpage'>Product Page</Nav.Link>
             <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
               <NavDropdown.Item href=''>Action</NavDropdown.Item>
               <NavDropdown.Item href=''>Another action</NavDropdown.Item>
