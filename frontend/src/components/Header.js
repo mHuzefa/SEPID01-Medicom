@@ -5,6 +5,7 @@ const Header = () => {
 
   return (
     <div>
+
       <div className='navHeader'>
         <div>
           <a className='navLogo' href='#home'>

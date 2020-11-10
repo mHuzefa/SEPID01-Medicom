@@ -8,6 +8,9 @@ import LoginPage from './pages/LoginPage'
 import ProductPage from './pages/ProductPage'
 import SignUp from './pages/RegistrationPage'
 
+import ProductPage from './pages/ProductPage'
+
+
 const App = () => {
   return (
     <Router>
